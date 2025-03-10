@@ -30,10 +30,9 @@ const Home = () => {
   //how many comments
   const totalComments = movies.reduce((sum, movie) => sum + movie.comments, 0);
   //average rating
-  const averageRating = movies.reduce(
-    (sum, movie) => (sum + movie.rating) / movies.length,
-    0
-  );
+  const averageRating = movies
+    .reduce((sum, movie) => (sum + movie.rating) / totalMovies, 0)
+    .toFixed(1); // round to 1 decimal
 
   return (
     <div className="p-8 space-y-8 bg-gray-900 min-h-screen">
@@ -44,7 +43,15 @@ const Home = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-white">
           <div className="bg-gray-800 p-4 rounded-lg flex flex-col items-center">
             <p className="text-lg font-medium ">Total Movies</p>
-            <p className="text-4xl font-bold">Total Movies</p>
+            <p className="text-4xl font-bold">{totalMovies}</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg flex flex-col items-center">
+            <p className="text-lg font-medium ">Total Comments</p>
+            <p className="text-4xl font-bold">{totalComments}</p>
+          </div>
+          <div className="bg-gray-800 p-4 rounded-lg flex flex-col items-center">
+            <p className="text-lg font-medium ">Average Rating</p>
+            <p className="text-4xl font-bold">{averageRating}</p>
           </div>
         </div>
       </div>
