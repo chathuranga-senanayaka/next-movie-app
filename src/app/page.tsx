@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Home = () => {
@@ -55,6 +56,27 @@ const Home = () => {
           </div>
         </div>
       </div>
+      {/* Movie List */}
+      <h2 className="text-3xl font-semibold text-white">Movie List</h2>
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        {movies.map((movie) => (
+          <li
+            key={movie.id}
+            className="bg-gray-800 p-6 rounded-lg shadow-xl hover:shadow-2xl transition-all duration-300"
+          >
+            <Link
+              href={`/movies/${movie.id}`}
+              className="text-2xl font-bold text-blue-400 hover:text-blue-600"
+            >
+              {movie.title}
+            </Link>
+            <p className="text-gray-400 text-sm mt-2">{movie.description}</p>
+            <div className="flex justify-between items-center mt-4">
+              <div className="flex items-center text-sm text-gray-300"></div>
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
