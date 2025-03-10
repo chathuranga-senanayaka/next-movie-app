@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import { FaComment, FaStar } from "react-icons/fa";
 
 const Home = () => {
   const movies = [
@@ -72,7 +73,14 @@ const Home = () => {
             </Link>
             <p className="text-gray-400 text-sm mt-2">{movie.description}</p>
             <div className="flex justify-between items-center mt-4">
-              <div className="flex items-center text-sm text-gray-300"></div>
+              <div className="flex items-center text-sm text-gray-300">
+                <FaComment className="mr-1" />
+                <span>{movie.comments}</span>
+              </div>
+              <div className="flex items-center text-sm text-yellow-400">
+                <FaStar className="mr-1" />
+                <span>{movie.rating}</span>
+              </div>
             </div>
           </li>
         ))}
